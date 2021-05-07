@@ -29,7 +29,7 @@ ReactDOM.render(
   // <Provider store={store}>
   // <Provider>
   <Provider store={store}>
-    <App />,
+    <App />
   </Provider>,
 
   document.getElementById('root')

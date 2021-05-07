@@ -6,8 +6,6 @@ const initState = {
 }
 
 export default function app(state = initState, action) {
-  console.log('action', action)
-  console.log('state', state)
   switch (action.type) {
     case APP_TOGGELE_SIDEBAR:
       return {

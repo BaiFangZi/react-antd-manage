@@ -6,9 +6,10 @@ import Header from './Header'
 import SideBar from './SideBar'
 
 //路由组件
-import Category from '../category'
+// import Category from '../category'
 import Dashboard from '../dashboard'
-import Product from '../product'
+import RichEditor from '@/pages/component-demos/richEditor'
+
 import Chart from '../chart'
 import Chart1 from '../chart/chart1'
 
@@ -34,8 +35,13 @@ class AppLayout extends React.Component {
             <Switch>
               <Redirect exact path="/" to="/dashboard"></Redirect>
               <Route path="/dashboard" component={Dashboard}></Route>
-              <Route path="/category" component={Category}></Route>
-              <Route path="/product" component={Product}></Route>
+              <Route
+                path="/component-demos/richEditor"
+                component={RichEditor}
+              ></Route>
+
+              {/* <Route path="/category" component={Category}></Route> */}
+              {/* <Route path="/product" component={Product}></Route> */}
               <Route path="/chart/chart1" component={Chart1}></Route>
               {/* <Redirect to="/dashboard"></Redirect> */}
             </Switch>
