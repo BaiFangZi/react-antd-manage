@@ -20,7 +20,7 @@ class Header extends React.Component {
           {
             className: 'trigger',
             onClick: () => {
-              toggleSidebar(12)
+              toggleSidebar()
             },
           }
         )}

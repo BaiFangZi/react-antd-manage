@@ -26,8 +26,6 @@ import { Provider } from 'react-redux'
 // store.subscribe(() => {})
 
 ReactDOM.render(
-  // <Provider store={store}>
-  // <Provider>
   <Provider store={store}>
     <App />
   </Provider>,

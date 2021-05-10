@@ -1,13 +1,14 @@
 import { Editor } from 'react-draft-wysiwyg'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 
-import { EditorState, convertToRaw, ContentState } from 'draft-js'
+import { EditorState, convertToRaw } from 'draft-js'
 import draftToHtml from 'draftjs-to-html'
 import draftToMarkdown from 'draftjs-to-markdown'
 
 // import htmlToDraft from 'html-to-draftjs'
 import './index.less'
 import React from 'react'
+// console.log(React)
 import { Card, Row, Col } from 'antd'
 
 export default class RichEditor extends React.Component {

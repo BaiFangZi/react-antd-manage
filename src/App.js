@@ -1,7 +1,7 @@
 // import { Button } from 'antd'
 import React from 'react'
 import { Route, BrowserRouter, Switch } from 'react-router-dom'
-import { Provider } from 'react-redux'
+// import { Provider } from 'react-redux'
 import Layout from './pages/layout'
 import Login from './pages/login'
 

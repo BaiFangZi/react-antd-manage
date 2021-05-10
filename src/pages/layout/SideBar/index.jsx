@@ -6,6 +6,7 @@ import {
   // VideoCameraOutlined,
   UploadOutlined,
 } from '@ant-design/icons'
+import { connect } from 'react-redux'
 import { routes } from '../../../router'
 class SideBar extends React.Component {
   state = {
@@ -49,8 +50,9 @@ class SideBar extends React.Component {
     const { Sider } = Layout
     const curPath = this.props.location.pathname
     const curOpenSub = this.state.curOpenSub
+    const { collapsed } = this.props
     return (
-      <Sider trigger={null} collapsible collapsed={this.props.collapsed}>
+      <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo" />
         <Menu
           theme="dark"
@@ -64,5 +66,4 @@ class SideBar extends React.Component {
     )
   }
 }
-
-export default withRouter(SideBar)
+export default connect((state) => state.app)(withRouter(SideBar))

@@ -33,6 +33,24 @@ export const routes = [
       },
     ],
   },
+  {
+    path: '/chart',
+    text: '图表',
+    children: [
+      {
+        path: '/chart/keyboard',
+        text: '键盘图表',
+      },
+      {
+        path: '/chart/line',
+        text: '折线图',
+      },
+      {
+        path: '/chart/mixChart',
+        text: '混合图表',
+      },
+    ],
+  },
   // {
   //   // name: 'product',
   //   path: '/product',
