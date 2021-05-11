@@ -1,10 +1,10 @@
 import { Layout } from 'antd'
 import { Route, Redirect, Switch } from 'react-router-dom'
-import routeList from '@/router/mapRoute'
+import { mainRoute } from '@/router/mapRoute'
 // import { Fragment } from 'react'
 const Content = () => {
   const createContent = () => {
-    let router = routeList.map((r) => (
+    let router = mainRoute.map((r) => (
       <Route path={r.path} component={r.component} key={r.path}></Route>
     ))
     return router

@@ -51,6 +51,34 @@ export const routes = [
       },
     ],
   },
+  {
+    path: '/nestMenu',
+    text: '嵌套菜单',
+    children: [
+      {
+        path: '/nestMenu/level1_1',
+        text: '层级level1_1',
+      },
+      {
+        path: '/nestMenu/level1_2',
+        text: '层级level1_2',
+        children: [
+          {
+            path: '/nestMenu/level1_2/level1_2_1',
+            text: '层级level1_2_1',
+          },
+          {
+            path: '/nestMenu/level1_2/level1_2_2',
+            text: '层级level1_2_2',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    path: '/table',
+    text: '综合表格',
+  },
   // {
   //   // name: 'product',
   //   path: '/product',

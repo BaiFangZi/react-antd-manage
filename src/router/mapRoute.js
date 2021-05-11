@@ -4,7 +4,7 @@
 
 import Loadable from 'react-loadable'
 import Loading from '@/component/Loading'
-export default [
+export const mainRoute = [
   {
     path: '/dashboard',
     component: Loadable({
@@ -51,6 +51,45 @@ export default [
     path: '/chart/mixChart',
     component: Loadable({
       loader: () => import('@/pages/chart/mixChart'),
+      loading: Loading,
+    }),
+  },
+
+  {
+    path: '/nestMenu',
+    component: Loadable({
+      loader: () => import('@/pages/nestMenu'),
+      loading: Loading,
+    }),
+  },
+  {
+    path: '/table',
+    component: Loadable({
+      loader: () => import('@/pages/table'),
+      loading: Loading,
+    }),
+  },
+]
+
+export const nestMenu = [
+  {
+    path: '/nestMenu/level1_1',
+    component: Loadable({
+      loader: () => import('@/pages/nestMenu/level1_1'),
+      loading: Loading,
+    }),
+  },
+  {
+    path: '/nestMenu/level1_2/level1_2_1',
+    component: Loadable({
+      loader: () => import('@/pages/nestMenu/level1_2/level1_2_1'),
+      loading: Loading,
+    }),
+  },
+  {
+    path: '/nestMenu/level1_2/level1_2_2',
+    component: Loadable({
+      loader: () => import('@/pages/nestMenu/level1_2/level1_2_2'),
       loading: Loading,
     }),
   },

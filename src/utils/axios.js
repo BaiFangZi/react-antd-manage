@@ -2,7 +2,7 @@ import Axios from 'axios'
 
 export const axios = Axios
 export const request = Axios.create({
-  baseURL: '/',
+  baseURL: 'https://mock.mengxuegu.com/mock/6099e32ac7b7385be0a83437/api',
 })
 
 // request.interceptors.request.use(
@@ -11,9 +11,7 @@ export const request = Axios.create({
 // )
 
 request.interceptors.response.use(
-  (response) => {
-    console.log(response)
-  },
+  (response) => response,
   (err) => {
     console.log(err)
     return Promise.reject(err)
