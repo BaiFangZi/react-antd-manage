@@ -40,6 +40,7 @@
     "eslint-webpack-plugin": "^2.5.2",
     "fetch": "^1.1.0",
     "file-loader": "6.1.1",
+    "file-saver": "^2.0.5",
     "fs-extra": "^9.0.1",
     "html-to-draftjs": "^1.5.0",
     "html-webpack-plugin": "4.5.0",
@@ -82,7 +83,8 @@
     "webpack": "4.44.2",
     "webpack-dev-server": "3.11.1",
     "webpack-manifest-plugin": "2.2.0",
-    "workbox-webpack-plugin": "5.1.4"
+    "workbox-webpack-plugin": "5.1.4",
+    "xlsx": "^0.16.9"
   },
   "scripts": {
     "start": "node scripts/start.js",
@@ -188,7 +190,8 @@
     "less-loader": "^5.0.0",
     "react-app-rewired": "^2.1.8",
     "redux-devtools-extension": "^2.13.9",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "script-loader": "^0.7.2"
   },
   "_id": "react-project@0.1.0",
   "proxy": "https://xxxx.com"

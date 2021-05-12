@@ -69,6 +69,20 @@ export const mainRoute = [
       loading: Loading,
     }),
   },
+  {
+    path: '/exportExcel',
+    component: Loadable({
+      loader: () => import('@/pages/excel/exportExcel'),
+      loading: Loading,
+    }),
+  },
+  {
+    path: '/uploadExcel',
+    component: Loadable({
+      loader: () => import('@/pages/excel/uploadExcel'),
+      loading: Loading,
+    }),
+  },
 ]
 
 export const nestMenu = [

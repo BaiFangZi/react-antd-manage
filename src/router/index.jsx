@@ -79,6 +79,20 @@ export const routes = [
     path: '/table',
     text: '综合表格',
   },
+  {
+    path: '/excel',
+    text: 'Excel',
+    children: [
+      {
+        path: '/exportExcel',
+        text: '导出Excel',
+      },
+      {
+        path: '/uploadExcel',
+        text: '上传Excel',
+      },
+    ],
+  },
   // {
   //   // name: 'product',
   //   path: '/product',
