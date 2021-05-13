@@ -8,6 +8,7 @@ const { Dragger } = Upload
 const UploadExcel = () => {
   const [excelData, setExcelData] = useState([])
   const [preFileName, setPreFileName] = useState('')
+  console.log(232)
   const uploadProps = () => {
     return {
       name: 'file12121', //文件对象的key

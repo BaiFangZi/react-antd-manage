@@ -1,5 +1,5 @@
 import './index.less'
-import { Button, Divider, Input } from 'antd'
+import { Button, Input } from 'antd'
 const TableMenu = () => {
   const { Search } = Input
   const handleSearch = () => {}

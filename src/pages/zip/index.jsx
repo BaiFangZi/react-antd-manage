@@ -1,7 +1,7 @@
 import { Table } from 'antd'
 import { useState } from 'react'
-import ExportExcelMenu from './component/ExportExcelMenu'
-const ExportExcel = () => {
+import ExportZipMenu from './component/ExportZipMenu'
+const ExportZip = () => {
   const columns = [
     {
       title: 'Name',
@@ -26,14 +26,14 @@ const ExportExcel = () => {
     })
   }
   const [selectedRowKeys, setSelectedRowKeys] = useState([])
-  // const [modalVisible, setModalVisible] = useState(false)
+  const [loading, setLoading] = useState(false)
   const handleSelectChange = (selectedRowKeys) => {
     setSelectedRowKeys(selectedRowKeys)
   }
   const handleExport = (options) => {
-    const { autoWidth, compression, fileName, fileType } = options
+    setLoading(true)
+    const { fileName = '未命名', fileType, txtName = 'myTxt' } = options
     const exportHeader = ['key', 'name', 'age', 'address']
-
     let filterData = data.filter((i) => selectedRowKeys.includes(i.key))
     let _temp = filterData.length ? filterData : data
     let exportData = _temp.map((j) => [
@@ -43,21 +43,17 @@ const ExportExcel = () => {
       j['address'],
     ])
 
-    import('@/plugins/Export2Excel').then(({ export_json_to_excel }) => {
-      export_json_to_excel({
-        header: exportHeader,
-        data: exportData,
-        filename: fileName || '表格',
-        compression,
-        bookType: fileType,
-        autoWidth,
-      })
+    import('@/plugins/Export2Zip').then(({ export_txt_to_zip }) => {
+      // exportData 是数组
+      export_txt_to_zip(exportHeader, exportData, txtName, fileName)
+      setLoading(false)
     })
   }
   return (
     <div>
-      <ExportExcelMenu onExport={handleExport}></ExportExcelMenu>
+      <ExportZipMenu onExport={handleExport}></ExportZipMenu>
       <Table
+        loading={loading}
         columns={columns}
         dataSource={data}
         rowSelection={{
@@ -68,4 +64,4 @@ const ExportExcel = () => {
     </div>
   )
 }
-export default ExportExcel
+export default ExportZip

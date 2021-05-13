@@ -83,6 +83,13 @@ export const mainRoute = [
       loading: Loading,
     }),
   },
+  {
+    path: '/zip',
+    component: Loadable({
+      loader: () => import('@/pages/zip'),
+      loading: Loading,
+    }),
+  },
 ]
 
 export const nestMenu = [

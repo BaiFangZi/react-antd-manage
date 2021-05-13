@@ -5,10 +5,6 @@ import { Layout } from 'antd'
 import { toggleSidebar } from '../../../store/actions/app'
 // import PropTypes from 'prop-types'
 class Header extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     const { Header } = Layout
     // console.log(this.props)

@@ -1,16 +1,18 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { queryTableData } from '@/api/table'
 // import { useRequest } from '@/utils/hooks'
-import { Table, Button, Popconfirm } from 'antd'
+import { Table, Button } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import TableMenu from '@/component/TableMenu'
 const CTable = () => {
+  console.log('重新渲染了')
   const [tableData, setTableData] = useState([])
   const [loading, setLoading] = useState(false)
 
   const [pagination, setPagination] = useState({
     current: 1,
     pageSize: 10,
+    // total: 100,
   })
   const columns = [
     {
@@ -69,16 +71,20 @@ const CTable = () => {
 
   const handleTableChange = (pagination) => {
     const { current, pageSize } = pagination
-    console.log(pagination)
-    queryTable({ current, pageSize })
+    queryTable(pagination)
   }
-  const queryTable = (current = 1, pageSize = 10) => {
+  const queryTable = useCallback((pag) => {
+    const { current, pageSize } = pag
     setLoading(true)
     queryTableData({ current, pageSize })
       .then((res) => {
         const { data, count } = res.data
         setTableData(data)
-        setPagination({ ...pagination, total: count })
+        setPagination({
+          current,
+          pageSize,
+          total: count,
+        })
       })
       .catch((err) => {
         console.log(err)
@@ -86,10 +92,25 @@ const CTable = () => {
       .finally(() => {
         setLoading(false)
       })
-  }
-  useEffect(() => {
-    queryTable()
   }, [])
+  // const queryTable = (current = 1, pageSize = 10) => {
+  //   setLoading(true)
+  //   queryTableData({ current, pageSize })
+  //     .then((res) => {
+  //       const { data, count } = res.data
+  //       setTableData(data)
+  //       setPagination({ ...pagination, total: count })
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  //     .finally(() => {
+  //       setLoading(false)
+  //     })
+  // }
+  useEffect(() => {
+    queryTable(pagination)
+  }, [queryTable])
   return (
     <div>
       <TableMenu></TableMenu>

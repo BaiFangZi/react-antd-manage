@@ -93,6 +93,10 @@ export const routes = [
       },
     ],
   },
+  {
+    path: '/zip',
+    text: 'Zip',
+  },
   // {
   //   // name: 'product',
   //   path: '/product',
