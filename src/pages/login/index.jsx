@@ -1,32 +1,45 @@
 import React from 'react'
 import './login.less'
-import { Form, Input, Button } from 'antd'
+import { Form, Input, Button, message } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
-// import { compose } from 'redux'
+import { loginIn } from '@/api/app'
+import { connect } from 'react-redux'
+import { setCookie } from '@/store/actions/auth'
 
-const LoginForm = (props) => {
-  // console.log(props)
-  const validatePWD = (rule, value) => {
-    if (!value) {
-      return Promise.reject('密码不能为空')
-    } else if (!/^[a-zA-Z0-9]{4,12}$/.test(value)) {
-      return Promise.reject('密码为4-12位英文和数字')
-    } else {
-      return Promise.resolve()
-    }
+const validatePWD = (rule, value) => {
+  if (!value) {
+    return Promise.reject('密码不能为空')
+  } else if (!/^[a-zA-Z0-9]{4,12}$/.test(value)) {
+    return Promise.reject('密码为4-12位英文和数字')
+  } else {
+    return Promise.resolve()
   }
-  const onFinish = (values) => {
-    //提交表单且数据验证成功后回调事件
-    // console.log('Received values of form: ', values)
-    // console.log(props)
-    props.history.push('/admin')
+}
+const Login = (props) => {
+  console.log(props)
+  const handleSubmit = (value) => {
+    const { username, password } = value
+    loginIn({
+      username,
+      password,
+    }).then((res) => {
+      const { code, role } = res.data.data
+      const { setCookie } = props
+      if (code === 200) {
+        setCookie(role)
+        props.history.replace('/dashboard')
+      } else {
+        message.error('用户名错误,输入admin或者custome')
+      }
+    })
   }
+
   return (
     <div className="login-view">
       <Form
         className="login-form"
         name="normal_login"
-        onFinish={onFinish}
+        onFinish={handleSubmit}
         initialValues={{ remember: true }}
       >
         <Form.Item
@@ -41,7 +54,7 @@ const LoginForm = (props) => {
         >
           <Input
             prefix={<UserOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
-            placeholder="Username"
+            placeholder="用户：custome / 超管：admin"
           />
         </Form.Item>
         <Form.Item
@@ -55,7 +68,7 @@ const LoginForm = (props) => {
           <Input
             prefix={<LockOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
             type="password"
-            placeholder="Password"
+            placeholder="123456"
           />
         </Form.Item>
         <Form.Item>
@@ -64,7 +77,7 @@ const LoginForm = (props) => {
             htmlType="submit"
             className="login-form-button"
           >
-            Log in
+            登陆
           </Button>
         </Form.Item>
       </Form>
@@ -72,11 +85,4 @@ const LoginForm = (props) => {
   )
 }
 
-export default class Login extends React.Component {
-  // constructor() {
-  //   super()
-  // }
-  render() {
-    return <LoginForm history={this.props.history} />
-  }
-}
+export default connect((state) => state.auth, { setCookie })(Login)

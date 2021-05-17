@@ -2,7 +2,7 @@ import { APP_TOGGELE_SIDEBAR } from '../action-types'
 
 const initState = {
   collapsed: false,
-  aa: '12',
+  // aa: '12',
 }
 
 export default function app(state = initState, action) {

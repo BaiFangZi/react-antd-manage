@@ -1,4 +1,4 @@
-// import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 // import { queryTableData } from '@/api/table'
 
 // export const useRequest = (request, config = {}) => {
@@ -24,3 +24,5 @@
 //     error,
 //   }
 // }
+
+// export const useEchart = (dom, config) => {}

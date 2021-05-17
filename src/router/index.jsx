@@ -52,6 +52,21 @@ export const routes = [
     ],
   },
   {
+    path: '/auth',
+    text: '权限管理',
+    children: [
+      { path: '/auth/admin', text: '管理员' },
+      {
+        path: '/auth/custome',
+        text: '普通用户',
+      },
+      {
+        path: '/auth/authBtn',
+        text: '权限按钮',
+      },
+    ],
+  },
+  {
     path: '/nestMenu',
     text: '嵌套菜单',
     children: [
@@ -96,6 +111,10 @@ export const routes = [
   {
     path: '/zip',
     text: 'Zip',
+  },
+  {
+    path: '/about',
+    text: '关于',
   },
   // {
   //   // name: 'product',

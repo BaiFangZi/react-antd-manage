@@ -1,11 +1,9 @@
-// import {} from 'react'
 import { Switch, Route } from 'react-router-dom'
-// import { nestMenu } from '@/router/mapRoute'
-const NestMenu = (props) => {
+const Auth = (props) => {
   const { routes } = props
   return (
     <div>
-      <div>无限级菜单</div>
+      <div>权限管理</div>
       <Switch>
         {routes.map((r) => {
           const { path, component } = r
@@ -15,5 +13,4 @@ const NestMenu = (props) => {
     </div>
   )
 }
-
-export default NestMenu
+export default Auth

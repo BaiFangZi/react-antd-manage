@@ -1,8 +1,9 @@
 // import {} from 'react'
 import { Switch, Route } from 'react-router-dom'
 // import { nestMenu } from '@/router/mapRoute'
-const NestMenu = (props) => {
+const ComponentDemos = (props) => {
   const { routes } = props
+  console.log(props)
   return (
     <div>
       <div>无限级菜单</div>
@@ -16,4 +17,4 @@ const NestMenu = (props) => {
   )
 }
 
-export default NestMenu
+export default ComponentDemos

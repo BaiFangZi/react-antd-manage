@@ -6,8 +6,9 @@ import {
   // VideoCameraOutlined,
   UploadOutlined,
 } from '@ant-design/icons'
+import { routes } from '@/config/routes'
 import { connect } from 'react-redux'
-import { routes } from '../../../router'
+// import { routes } from '../../../router'
 class SideBar extends React.Component {
   state = {
     curOpenSub: '',
@@ -16,8 +17,8 @@ class SideBar extends React.Component {
   getMenuNodes = (routes) => {
     // console.log(2)
     return routes.map((item) => {
-      const { path, children, text } = item
-      if (!children) {
+      const { path, routes, text } = item
+      if (!routes) {
         return (
           <Menu.Item key={path} icon={<UserOutlined />}>
             <Link to={path}>{text}</Link>
@@ -26,7 +27,7 @@ class SideBar extends React.Component {
       } else {
         // debugger
         const curPath = this.props.location.pathname
-        let cItem = children.find((i) => i.path === curPath)
+        let cItem = routes.find((i) => i.path === curPath)
         if (cItem) {
           this.setState({
             curOpenSub: path,
@@ -35,7 +36,7 @@ class SideBar extends React.Component {
 
         return (
           <Menu.SubMenu key={path} icon={<UploadOutlined />} title={text}>
-            {this.getMenuNodes(children)}
+            {this.getMenuNodes(routes)}
           </Menu.SubMenu>
         )
       }

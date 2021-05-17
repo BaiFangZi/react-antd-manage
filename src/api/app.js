@@ -1,6 +1,8 @@
 import { request } from '../utils/axios'
 
-export const login = (data) =>
+export const loginIn = (data) =>
   request({
-    url: '/api/login',
+    url: '/loginIn',
+    method: 'post',
+    data,
   })

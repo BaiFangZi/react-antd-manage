@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { queryTableData } from '@/api/table'
 // import { useRequest } from '@/utils/hooks'
 import { Table, Button } from 'antd'
@@ -70,21 +70,40 @@ const CTable = () => {
   ]
 
   const handleTableChange = (pagination) => {
-    const { current, pageSize } = pagination
-    queryTable(pagination)
+    const { total, ...page } = pagination
+    // setPagination(page)
+    queryTable(page)
   }
-  const queryTable = useCallback((pag) => {
-    const { current, pageSize } = pag
+  // const queryTable = useMemo(() => {
+  //   const { current, pageSize } = pagination
+  //   setLoading(true)
+  //   queryTableData({ current, pageSize })
+  //     .then((res) => {
+  //       const { data, count } = res.data
+  //       setTableData(data)
+  //       setPagination({
+  //         current,
+  //         pageSize,
+  //         total: count,
+  //       })
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  //     .finally(() => {
+  //       setLoading(false)
+  //     })
+  // }, [pagination.current, pagination.pageSize])
+
+  const queryTable = useCallback((page) => {
     setLoading(true)
+    const { current, pageSize } = page
+    // console.log(page)
     queryTableData({ current, pageSize })
       .then((res) => {
         const { data, count } = res.data
         setTableData(data)
-        setPagination({
-          current,
-          pageSize,
-          total: count,
-        })
+        setPagination({ ...page, total: count })
       })
       .catch((err) => {
         console.log(err)
@@ -93,21 +112,7 @@ const CTable = () => {
         setLoading(false)
       })
   }, [])
-  // const queryTable = (current = 1, pageSize = 10) => {
-  //   setLoading(true)
-  //   queryTableData({ current, pageSize })
-  //     .then((res) => {
-  //       const { data, count } = res.data
-  //       setTableData(data)
-  //       setPagination({ ...pagination, total: count })
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     })
-  //     .finally(() => {
-  //       setLoading(false)
-  //     })
-  // }
+
   useEffect(() => {
     queryTable(pagination)
   }, [queryTable])

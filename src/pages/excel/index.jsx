@@ -1,11 +1,12 @@
 // import {} from 'react'
 import { Switch, Route } from 'react-router-dom'
 // import { nestMenu } from '@/router/mapRoute'
-const NestMenu = (props) => {
+const Excel = (props) => {
   const { routes } = props
+  console.log(props)
   return (
     <div>
-      <div>无限级菜单</div>
+      {/* 1212 */}
       <Switch>
         {routes.map((r) => {
           const { path, component } = r
@@ -16,4 +17,4 @@ const NestMenu = (props) => {
   )
 }
 
-export default NestMenu
+export default Excel

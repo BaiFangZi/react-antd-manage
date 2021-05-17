@@ -61,6 +61,29 @@ export const mainRoute = [
       loader: () => import('@/pages/nestMenu'),
       loading: Loading,
     }),
+    routes: [
+      {
+        path: '/nestMenu/level1_1',
+        component: Loadable({
+          loader: () => import('@/pages/nestMenu/level1_1'),
+          loading: Loading,
+        }),
+      },
+      {
+        path: '/nestMenu/level1_2/level1_2_1',
+        component: Loadable({
+          loader: () => import('@/pages/nestMenu/level1_2/level1_2_1'),
+          loading: Loading,
+        }),
+      },
+      {
+        path: '/nestMenu/level1_2/level1_2_2',
+        component: Loadable({
+          loader: () => import('@/pages/nestMenu/level1_2/level1_2_2'),
+          loading: Loading,
+        }),
+      },
+    ],
   },
   {
     path: '/table',
@@ -90,28 +113,66 @@ export const mainRoute = [
       loading: Loading,
     }),
   },
+  {
+    path: '/auth',
+    component: Loadable({
+      loader: () => import('@/pages/auth'),
+      loading: Loading,
+    }),
+    routes: [
+      {
+        path: '/auth/admin',
+        component: Loadable({
+          loader: () => import('@/pages/auth/admin'),
+          loading: Loading,
+        }),
+      },
+      {
+        path: '/auth/custome',
+        component: Loadable({
+          loader: () => import('@/pages/auth/custome'),
+          loading: Loading,
+        }),
+      },
+      {
+        path: '/auth/authBtn',
+        component: Loadable({
+          loader: () => import('@/pages/auth/authBtn'),
+          loading: Loading,
+        }),
+      },
+    ],
+  },
+
+  {
+    path: '/about',
+    component: Loadable({
+      loader: () => import('@/pages/about'),
+      loading: Loading,
+    }),
+  },
 ]
 
-export const nestMenu = [
-  {
-    path: '/nestMenu/level1_1',
-    component: Loadable({
-      loader: () => import('@/pages/nestMenu/level1_1'),
-      loading: Loading,
-    }),
-  },
-  {
-    path: '/nestMenu/level1_2/level1_2_1',
-    component: Loadable({
-      loader: () => import('@/pages/nestMenu/level1_2/level1_2_1'),
-      loading: Loading,
-    }),
-  },
-  {
-    path: '/nestMenu/level1_2/level1_2_2',
-    component: Loadable({
-      loader: () => import('@/pages/nestMenu/level1_2/level1_2_2'),
-      loading: Loading,
-    }),
-  },
-]
+// export const nestMenu = [
+//   {
+//     path: '/nestMenu/level1_1',
+//     component: Loadable({
+//       loader: () => import('@/pages/nestMenu/level1_1'),
+//       loading: Loading,
+//     }),
+//   },
+//   {
+//     path: '/nestMenu/level1_2/level1_2_1',
+//     component: Loadable({
+//       loader: () => import('@/pages/nestMenu/level1_2/level1_2_1'),
+//       loading: Loading,
+//     }),
+//   },
+//   {
+//     path: '/nestMenu/level1_2/level1_2_2',
+//     component: Loadable({
+//       loader: () => import('@/pages/nestMenu/level1_2/level1_2_2'),
+//       loading: Loading,
+//     }),
+//   },
+// ]
