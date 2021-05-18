@@ -133,6 +133,18 @@ export const routes = [
           loading: Loading,
         }),
       },
+      // {
+      //   text: '层级1-2',
+      //   roles: ['custome', 'admin'],
+      //   path: '/nestMenu/level1_2',
+      //   component: Loadable({
+      //     loader: () => import('@/pages/nestMenu/level1_2'),
+      //     loading: Loading,
+      //   }),
+      //   routes: [
+
+      //   ],
+      // },
     ],
   },
   {
@@ -237,6 +249,16 @@ export const routes = [
     path: '/about',
     component: Loadable({
       loader: () => import('@/pages/about'),
+      loading: Loading,
+    }),
+  },
+  {
+    text: '404',
+    hidden: true,
+    roles: ['custome', 'admin'],
+    path: '.error/404',
+    component: Loadable({
+      loader: () => import('@/pages/error/404'),
       loading: Loading,
     }),
   },

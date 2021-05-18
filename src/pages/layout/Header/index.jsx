@@ -1,48 +1,54 @@
 import React, { useReducer } from 'react'
 import { connect } from 'react-redux'
-import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons'
-import { Layout } from 'antd'
-
+import {
+  MenuUnfoldOutlined,
+  MenuFoldOutlined,
+  UserOutlined,
+} from '@ant-design/icons'
+import { Layout, Menu, Dropdown, Avatar } from 'antd'
 import { toggleSidebar } from '@/store/actions/app'
-// import PropTypes from 'prop-types'
 
-class Header extends React.Component {
-  render() {
-    const { Header } = Layout
-    // console.log(this.props)
-    const { collapsed, toggleSidebar } = this.props
-    return (
-      <Header style={{ padding: 0, background: '#fff' }}>
-        {React.createElement(
-          collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
-          {
-            className: 'trigger',
-            onClick: () => {
-              toggleSidebar()
-            },
-          }
-        )}
-      </Header>
-    )
-  }
+const menu = (
+  <Menu>
+    <Menu.Item key="userCenter">
+      <a href="https://www.antgroup.com">个人中心</a>
+    </Menu.Item>
+    <Menu.Item key="setting">
+      <a href="https://www.aliyun.com">系统设置</a>
+    </Menu.Item>
+    <Menu.Divider />
+    <Menu.Item key="loginOut">退出登陆</Menu.Item>
+  </Menu>
+)
+
+const Header = (props) => {
+  // const []
+  const { collapsed, toggleSidebar } = props
+  return (
+    <Layout.Header
+      style={{
+        padding: 0,
+        background: '#fff',
+        display: 'flex',
+        justifyContent: 'space-between',
+      }}
+    >
+      {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+        className: 'trigger',
+        onClick: () => {
+          toggleSidebar()
+        },
+      })}
+      <Dropdown overlay={menu} trigger={['click']}>
+        <Avatar
+          style={{
+            backgroundColor: '#87d068',
+            margin: '16px',
+          }}
+          icon={<UserOutlined />}
+        />
+      </Dropdown>
+    </Layout.Header>
+  )
 }
-
 export default connect((state) => state.app, { toggleSidebar })(Header)
-
-// const CHeader = (props) => {
-//   const { Header } = Layout
-//   const { collapsed, toggleSidebar } = props
-//   const [] = useReducer()
-//   return
-//   ;<>
-//     <Header className="site-layout-background" style={{ padding: 0 }}>
-//       {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-//         className: 'trigger',
-//         onClick: () => {
-//           toggleSidebar()
-//         },
-//       })}
-//     </Header>
-//   </>
-// }
-// export default CHeader

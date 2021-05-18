@@ -4,8 +4,8 @@ import { Form, Input, Button, message } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
 import { loginIn } from '@/api/app'
 import { connect } from 'react-redux'
-import { setCookie } from '@/store/actions/auth'
-
+import { login } from '@/store/actions/auth'
+// import { setCookie } from '@/utils/auth'
 const validatePWD = (rule, value) => {
   if (!value) {
     return Promise.reject('密码不能为空')
@@ -16,22 +16,17 @@ const validatePWD = (rule, value) => {
   }
 }
 const Login = (props) => {
-  console.log(props)
   const handleSubmit = (value) => {
-    const { username, password } = value
-    loginIn({
-      username,
-      password,
-    }).then((res) => {
-      const { code, role } = res.data.data
-      const { setCookie } = props
-      if (code === 200) {
-        setCookie(role)
+    console.log(props)
+    const { login } = props
+
+    login(value)
+      .then((res) => {
         props.history.replace('/dashboard')
-      } else {
-        message.error('用户名错误,输入admin或者custome')
-      }
-    })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   return (
@@ -85,4 +80,5 @@ const Login = (props) => {
   )
 }
 
-export default connect((state) => state.auth, { setCookie })(Login)
+export default connect((state) => state.user, { login })(Login)
+// export default Login
