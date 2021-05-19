@@ -8,7 +8,7 @@ export const getCookie = () => {
   return Cookie.get('app-token')
 }
 
-export const removeCookie = (key) => {
-  if (!getCookie(key)) return false
-  Cookie.remove(key)
+export const removeCookie = () => {
+  if (!getCookie(cookieKey)) return false
+  Cookie.remove(cookieKey)
 }

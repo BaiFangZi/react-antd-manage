@@ -65,7 +65,7 @@ const Content = (props) => {
         {getContent(routes).map((route) => {
           return <RouteWithSubRoutes key={route.path} {...route} />
         })}
-        <Redirect to="/error/404" />
+        {/* <Redirect to="/error/404" /> */}
       </Switch>
     </Layout.Content>
   )

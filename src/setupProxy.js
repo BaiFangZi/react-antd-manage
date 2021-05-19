@@ -13,7 +13,8 @@ const proxy = require('http-proxy-middleware')
 module.exports = function (app) {
   app.use(
     proxy('/api', {
-      target: ' https://mock.mengxuegu.com/mock/6099e32ac7b7385be0a83437/api',
+      target:
+        'https://mock.mengxuegu.com/mock/60a4ab7dff333b1b32495812/api_copy',
       changeOrigin: true,
       pathRewrite: {
         '^/api': '/api',

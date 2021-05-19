@@ -1,7 +1,7 @@
 import * as types from '../action-types'
-import { loginIn } from '@/api/app'
-import { setUserCookie } from './user'
-import { setCookie } from '@/utils/auth'
+import { reqLoginIn, reqLoginOut } from '@/api/auth'
+import { setUserCookie, removeUserCookie } from './user'
+import { setCookie, removeCookie } from '@/utils/auth'
 import { message } from 'antd'
 // import { setCookie } from '@/store/actions/auth';
 // export const setCookie = (token) => ({
@@ -9,10 +9,10 @@ import { message } from 'antd'
 //   token,
 // })
 
-export const login = (form) => (dispatch) => {
+export const loginIn = (form) => (dispatch) => {
   return new Promise((resolve, reject) => {
     const { username, password } = form
-    loginIn({
+    reqLoginIn({
       username,
       password,
     })
@@ -27,6 +27,24 @@ export const login = (form) => (dispatch) => {
           message.error('用户名错误,输入admin或者custome')
           reject()
         }
+      })
+      .catch((err) => {
+        reject(err)
+      })
+  })
+}
+
+export const loginOut = () => (dispatch) => {
+  return new Promise((resolve, reject) => {
+    reqLoginOut()
+      .then((res) => {
+        const { code } = res.data.data
+        if (code === 200) {
+          dispatch(removeUserCookie())
+          removeCookie()
+        }
+        resolve(res)
+        // if(c)
       })
       .catch((err) => {
         reject(err)

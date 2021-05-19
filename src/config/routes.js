@@ -241,11 +241,30 @@ export const routes = [
       },
     ],
   },
+  {
+    text: '个人中心',
+    roles: ['custome', 'admin'],
+    path: '/userCenter',
+    hidden: true,
+    component: Loadable({
+      loader: () => import('@/pages/userCenter'),
+      loading: Loading,
+    }),
+  },
+  {
+    text: '系统设置',
+    roles: ['custome', 'admin'],
+    path: '/sysSetting',
+    hidden: true,
+    component: Loadable({
+      loader: () => import('@/pages/sysSetting'),
+      loading: Loading,
+    }),
+  },
 
   {
     text: '关于',
     roles: ['custome', 'admin'],
-
     path: '/about',
     component: Loadable({
       loader: () => import('@/pages/about'),

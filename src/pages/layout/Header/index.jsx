@@ -7,22 +7,10 @@ import {
 } from '@ant-design/icons'
 import { Layout, Menu, Dropdown, Avatar } from 'antd'
 import { toggleSidebar } from '@/store/actions/app'
-
-const menu = (
-  <Menu>
-    <Menu.Item key="userCenter">
-      <a href="https://www.antgroup.com">个人中心</a>
-    </Menu.Item>
-    <Menu.Item key="setting">
-      <a href="https://www.aliyun.com">系统设置</a>
-    </Menu.Item>
-    <Menu.Divider />
-    <Menu.Item key="loginOut">退出登陆</Menu.Item>
-  </Menu>
-)
-
+import HeaderDropDown from './component/HeaderDropDown'
 const Header = (props) => {
   // const []
+  console.log(props)
   const { collapsed, toggleSidebar } = props
   return (
     <Layout.Header
@@ -39,7 +27,8 @@ const Header = (props) => {
           toggleSidebar()
         },
       })}
-      <Dropdown overlay={menu} trigger={['click']}>
+      <HeaderDropDown />
+      {/* <Dropdown overlay={menu} trigger={['click']}>
         <Avatar
           style={{
             backgroundColor: '#87d068',
@@ -47,7 +36,7 @@ const Header = (props) => {
           }}
           icon={<UserOutlined />}
         />
-      </Dropdown>
+      </Dropdown> */}
     </Layout.Header>
   )
 }

@@ -15,6 +15,14 @@ export default function user(state = initUserInfo, action) {
         ...state,
         token: action.token,
       }
+    case types.USER_REMOVE_COOKIE: {
+      console.log(state)
+      return {
+        ...state,
+        token: action.token,
+      }
+    }
+
     // case types.USER_SET_USER_INFO:
     //   return {
     //     ...state,

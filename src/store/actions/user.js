@@ -6,3 +6,8 @@ export const setUserCookie = (cookie) => {
     cookie,
   }
 }
+export const removeUserCookie = () => {
+  return {
+    type: types.USER_REMOVE_COOKIE,
+  }
+}

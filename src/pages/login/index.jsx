@@ -2,9 +2,9 @@ import React from 'react'
 import './login.less'
 import { Form, Input, Button, message } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons'
-import { loginIn } from '@/api/app'
+// import { loginIn } from '@/api/app'
 import { connect } from 'react-redux'
-import { login } from '@/store/actions/auth'
+import { loginIn } from '@/store/actions/auth'
 // import { setCookie } from '@/utils/auth'
 const validatePWD = (rule, value) => {
   if (!value) {
@@ -18,9 +18,8 @@ const validatePWD = (rule, value) => {
 const Login = (props) => {
   const handleSubmit = (value) => {
     console.log(props)
-    const { login } = props
-
-    login(value)
+    const { loginIn } = props
+    loginIn(value)
       .then((res) => {
         props.history.replace('/dashboard')
       })
@@ -80,5 +79,5 @@ const Login = (props) => {
   )
 }
 
-export default connect((state) => state.user, { login })(Login)
+export default connect((state) => state.user, { loginIn })(Login)
 // export default Login
