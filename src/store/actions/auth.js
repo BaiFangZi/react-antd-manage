@@ -18,9 +18,12 @@ export const loginIn = (form) => (dispatch) => {
     })
       .then((res) => {
         const { code, role } = res.data.data
-        console.log(res)
+        // console.log(code, role)
+
         if (code === 200) {
+          console.log(2323223323233)
           setCookie(role)
+          console.log('action auth', role)
           dispatch(setUserCookie(role))
           resolve()
         } else {

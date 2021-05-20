@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect, useMemo, Fragment } from 'react'
 import { Menu, Layout } from 'antd'
 import { Link, withRouter } from 'react-router-dom'
 import {
@@ -9,40 +9,37 @@ import {
 import { routes } from '@/config/routes'
 import { connect } from 'react-redux'
 
+const MenuNodes = (routes, role) => {
+  return routes.map((item) => {
+    const { hidden, path, routes, text, roles } = item
+    const curRole = role
+    if (roles.includes(curRole)) {
+      if (!routes) {
+        if (!hidden) {
+          return (
+            <Menu.Item key={path} icon={<UserOutlined />}>
+              <Link to={path}>{text}</Link>
+            </Menu.Item>
+          )
+        }
+      } else {
+        return (
+          <Menu.SubMenu key={path} icon={<UploadOutlined />} title={text}>
+            {MenuNodes(routes, role)}
+          </Menu.SubMenu>
+        )
+      }
+    }
+  })
+}
+
 const SideBar = (props) => {
+  // console.log('1212112212212', props)
   const [menuNode, setMenuNode] = useState([])
   const { collapsed } = props
   const _curPath = props.location.pathname
   const [curPath, setCurpath] = useState(_curPath)
 
-  const getMenuNodes = (routes) => {
-    return routes.map((item) => {
-      const { hidden, path, routes, text, roles } = item
-      const curRole = props.token
-      if (roles.includes(curRole)) {
-        if (!routes) {
-          if (!hidden) {
-            return (
-              <Menu.Item key={path} icon={<UserOutlined />}>
-                <Link to={path}>{text}</Link>
-              </Menu.Item>
-            )
-          }
-        } else {
-          return (
-            <Menu.SubMenu key={path} icon={<UploadOutlined />} title={text}>
-              {getMenuNodes(routes)}
-            </Menu.SubMenu>
-          )
-        }
-      }
-    })
-  }
-
-  useEffect(() => {
-    let menu = getMenuNodes(routes)
-    setMenuNode(menu)
-  }, [])
   useEffect(() => {
     setCurpath(props.location.pathname)
   }, [props.location.pathname])
@@ -51,18 +48,11 @@ const SideBar = (props) => {
     <Layout.Sider trigger={null} collapsible collapsed={collapsed}>
       <div className="logo" />
       <Menu theme="dark" mode="inline" selectedKeys={[curPath]}>
-        {menuNode}
+        {MenuNodes(routes, props.cookie).map((item) => item)}
       </Menu>
     </Layout.Sider>
   )
 }
-
-// export default connect((state) => {
-//   return {
-//     ...state.app,
-//     ...state.user,
-//   }
-// })(withRouter(SideBar))
 
 export default connect(({ app, user }) => ({ ...user, ...app }))(
   withRouter(SideBar)

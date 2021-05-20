@@ -5,7 +5,7 @@ export const setCookie = (cookie) => {
   Cookie.set(cookieKey, cookie)
 }
 export const getCookie = () => {
-  return Cookie.get('app-token')
+  return Cookie.get(cookieKey)
 }
 
 export const removeCookie = () => {

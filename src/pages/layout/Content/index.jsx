@@ -34,7 +34,7 @@ const Content = (props) => {
   }
 
   const getContent = (routes) => {
-    const curRole = props.token
+    const curRole = props.cookie
     let content = routes.reduce((pre, item) => {
       const { routes, ...rest } = item
       if (filterRoute(item, curRole)) {
