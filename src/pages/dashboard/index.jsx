@@ -1,7 +1,7 @@
 import React from 'react'
 // import BarChart from './components/Barchart'
 import LineChart from './components/LineChart'
-import { Row, Col, Card, Statistic, Space } from 'antd'
+import { Row, Col, Card, Statistic, Space, Button } from 'antd'
 import { LikeOutlined, ArrowUpOutlined } from '@ant-design/icons'
 const Dashboard = () => {
   const deadline = Date.now() + 1000 * 60 * 60 * 24 * 2 + 1000 * 30 // Moment is also OK
@@ -46,6 +46,7 @@ const Dashboard = () => {
           </Card>
         </Col>
       </Row>
+      <Button type="primary">121211</Button>
       {/* <Row style={{ marginTop: 20 }}>
         <Col span={24}>
           <Card>

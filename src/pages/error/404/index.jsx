@@ -14,3 +14,4 @@ const _404 = () => {
     />
   )
 }
+export default _404

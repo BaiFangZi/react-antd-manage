@@ -113,38 +113,38 @@ export const routes = [
           loading: Loading,
         }),
       },
-      {
-        text: '层级1-2-1',
-        roles: ['custome', 'admin'],
 
-        path: '/nestMenu/level1_2/level1_2_1',
+      {
+        text: '层级1-2',
+        roles: ['custome', 'admin'],
+        path: '/nestMenu/level1_2',
         component: Loadable({
-          loader: () => import('@/pages/nestMenu/level1_2/level1_2_1'),
+          loader: () => import('@/pages/nestMenu/level1_2'),
           loading: Loading,
         }),
-      },
-      {
-        text: '层级1-2-2',
-        roles: ['custome', 'admin'],
+        routes: [
+          {
+            text: '层级1-2-1',
+            roles: ['custome', 'admin'],
 
-        path: '/nestMenu/level1_2/level1_2_2',
-        component: Loadable({
-          loader: () => import('@/pages/nestMenu/level1_2/level1_2_2'),
-          loading: Loading,
-        }),
-      },
-      // {
-      //   text: '层级1-2',
-      //   roles: ['custome', 'admin'],
-      //   path: '/nestMenu/level1_2',
-      //   component: Loadable({
-      //     loader: () => import('@/pages/nestMenu/level1_2'),
-      //     loading: Loading,
-      //   }),
-      //   routes: [
+            path: '/nestMenu/level1_2/level1_2_1',
+            component: Loadable({
+              loader: () => import('@/pages/nestMenu/level1_2/level1_2_1'),
+              loading: Loading,
+            }),
+          },
+          {
+            text: '层级1-2-2',
+            roles: ['custome', 'admin'],
 
-      //   ],
-      // },
+            path: '/nestMenu/level1_2/level1_2_2',
+            component: Loadable({
+              loader: () => import('@/pages/nestMenu/level1_2/level1_2_2'),
+              loading: Loading,
+            }),
+          },
+        ],
+      },
     ],
   },
   {
@@ -271,16 +271,16 @@ export const routes = [
       loading: Loading,
     }),
   },
-  {
-    text: '404',
-    hidden: true,
-    roles: ['custome', 'admin'],
-    path: '.error/404',
-    component: Loadable({
-      loader: () => import('@/pages/error/404'),
-      loading: Loading,
-    }),
-  },
+  // {
+  //   text: '404',
+  //   hidden: true,
+  //   roles: ['custome', 'admin'],
+  //   path: '.error/404',
+  //   component: Loadable({
+  //     loader: () => import('@/pages/error/404'),
+  //     loading: Loading,
+  //   }),
+  // },
 ]
 
 // export const nestMenu = [

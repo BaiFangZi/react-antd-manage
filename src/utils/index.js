@@ -1,11 +1,3 @@
-// export const debounce = (callback, delay) => {
-//   let timer = null
-//   return () => {
-//     timer && clearTimeout(timer)
-//     timer = setTimeout(callback, delay)
-//   }
-// }
-
 export function debounce(func, wait, immediate) {
   let timeout, args, context, timestamp, result
 
@@ -39,4 +31,32 @@ export function debounce(func, wait, immediate) {
 
     return result
   }
+}
+
+const filterRoute = (curRoute, role) => {
+  const { routes, roles } = curRoute
+  if (roles.includes(role)) {
+    return true
+  } else if (routes) {
+    return routes.some(({ roles }) => roles.includes(role))
+  }
+  return false
+}
+
+export const filterAuthRouter = (routes, role) => {
+  // const role =
+  let content = routes.reduce((pre, item) => {
+    const { routes, ...rest } = item
+    if (filterRoute(item, role)) {
+      if (routes) {
+        pre.push({
+          ...rest,
+          routes: filterAuthRouter(routes, role),
+        })
+      }
+      pre.push(item)
+    }
+    return pre
+  }, [])
+  return content
 }

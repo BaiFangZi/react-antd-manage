@@ -1,8 +1,9 @@
 import React from 'react'
+import './assets/global.css'
 import ReactDOM from 'react-dom'
 // import './index.css';
 import App from './App'
-import './assets/global.css'
+
 import store from './store'
 // debugger
 
