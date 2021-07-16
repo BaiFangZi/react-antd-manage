@@ -6,7 +6,7 @@ const ComponentDemos = (props) => {
   console.log(props)
   return (
     <div>
-      <div>无限级菜单</div>
+      {/* <div>无限级菜单</div> */}
       <Switch>
         {routes.map((r) => {
           const { path, component } = r

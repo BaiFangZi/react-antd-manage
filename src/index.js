@@ -12,7 +12,8 @@ import store from './store'
 // import { composeWithDevTools } from 'redux-devtools-extension'
 // import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
-
+import { ConfigProvider } from 'antd'
+import zh_CN from 'antd/lib/locale/zh_CN'
 // import { rootReducer } from './reducres'
 
 // import router from './router'
@@ -28,7 +29,9 @@ import { Provider } from 'react-redux'
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ConfigProvider locale={zh_CN}>
+      <App />
+    </ConfigProvider>
   </Provider>,
 
   document.getElementById('root')

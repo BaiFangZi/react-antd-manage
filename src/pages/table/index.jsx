@@ -1,11 +1,17 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { queryTableData } from '@/api/table'
 // import { useRequest } from '@/utils/hooks'
-import { Table, Button } from 'antd'
+import { Table, Button, Tag, Popconfirm } from 'antd'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import TableMenu from '@/component/TableMenu'
+import AddDataDialog from './components/AddDataDialog'
+import UpdateDataDrawer from './components/updateDateDrawer'
+import './index.less'
+
 const CTable = () => {
   console.log('重新渲染了')
+  // let visible = false
+  const [visible, setVisible] = useState(false)
   const [tableData, setTableData] = useState([])
   const [loading, setLoading] = useState(false)
 
@@ -23,10 +29,7 @@ const CTable = () => {
       title: '用户名',
       dataIndex: 'name',
     },
-    {
-      title: '平台',
-      dataIndex: 'platform',
-    },
+
     {
       title: '升级次数',
       dataIndex: 'upgraded',
@@ -38,6 +41,13 @@ const CTable = () => {
     {
       title: '状态',
       dataIndex: 'status',
+      render(_, record) {
+        return record.status ? (
+          <Tag color="#87d068">运行中</Tag>
+        ) : (
+          <Tag color="#f50">关闭</Tag>
+        )
+      },
     },
     {
       title: '上次升级',
@@ -53,16 +63,24 @@ const CTable = () => {
               type="primary"
               shape="circle"
               icon={<EditOutlined />}
+              onClick={() => handleUpdate(record)}
             ></Button>
-            <Button
-              style={{
-                marginLeft: 10,
-              }}
-              type="primary"
-              danger
-              shape="circle"
-              icon={<DeleteOutlined />}
-            ></Button>
+            {tableData.length >= 1 ? (
+              <Popconfirm
+                title="确认删除这个记录吗"
+                onConfirm={() => handleDelete(record)}
+              >
+                <Button
+                  style={{
+                    marginLeft: 10,
+                  }}
+                  type="primary"
+                  danger
+                  shape="circle"
+                  icon={<DeleteOutlined />}
+                ></Button>
+              </Popconfirm>
+            ) : null}
           </span>
         )
       },
@@ -73,6 +91,16 @@ const CTable = () => {
     const { total, ...page } = pagination
     // setPagination(page)
     queryTable(page)
+  }
+  const handleDelete = (record) => {
+    console.log(record)
+  }
+  const handleUpdate = (record) => {
+    // visible = true
+    setVisible(true)
+  }
+  const handleClose = () => {
+    setVisible(false)
   }
   // const queryTable = useMemo(() => {
   //   const { current, pageSize } = pagination
@@ -118,7 +146,10 @@ const CTable = () => {
   }, [queryTable])
   return (
     <div>
-      <TableMenu></TableMenu>
+      <div className="table-menu">
+        <AddDataDialog></AddDataDialog>
+        <TableMenu></TableMenu>
+      </div>
       <Table
         columns={columns}
         rowKey={(record) => record.id}
@@ -127,6 +158,10 @@ const CTable = () => {
         loading={loading}
         onChange={handleTableChange}
       />
+      <UpdateDataDrawer
+        onClose={handleClose}
+        visible={visible}
+      ></UpdateDataDrawer>
     </div>
   )
 }

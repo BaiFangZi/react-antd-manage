@@ -1,13 +1,12 @@
 import './index.less'
-import { Button, Input } from 'antd'
+import { Input } from 'antd'
 const TableMenu = () => {
   const { Search } = Input
   const handleSearch = () => {}
   return (
-    <div className="table-menu-wrapper">
-      <Button type="primary">添加</Button>
+    <div className="table-search-wrapper">
       <Search
-        className="table-menu-search"
+        className="table-input-search"
         placeholder="输入搜索内容"
         allowClear
         enterButton="搜索"

@@ -8,7 +8,6 @@ const { Dragger } = Upload
 const UploadExcel = () => {
   const [excelData, setExcelData] = useState([])
   const [preFileName, setPreFileName] = useState('')
-  console.log(232)
   const uploadProps = () => {
     return {
       name: 'file12121', //文件对象的key
@@ -79,6 +78,13 @@ const UploadExcel = () => {
   }
   return (
     <div>
+      <h2
+        style={{
+          textAlign: 'center',
+        }}
+      >
+        上传Excel文件
+      </h2>
       <Dragger {...uploadProps()}>
         <p className="ant-upload-drag-icon">
           <InboxOutlined />

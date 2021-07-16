@@ -28,15 +28,6 @@ const Header = (props) => {
         },
       })}
       <HeaderDropDown />
-      {/* <Dropdown overlay={menu} trigger={['click']}>
-        <Avatar
-          style={{
-            backgroundColor: '#87d068',
-            margin: '16px',
-          }}
-          icon={<UserOutlined />}
-        />
-      </Dropdown> */}
     </Layout.Header>
   )
 }

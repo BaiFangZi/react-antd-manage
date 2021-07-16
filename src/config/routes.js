@@ -50,48 +50,6 @@ export const routes = [
       },
     ],
   },
-  // {
-  //   text: '图表',
-  // roles: ['custome', 'admin'],
-  //
-  // path: '/chart',
-  //   component: Loadable({
-  //     loader: () => import('@/pages/chart'),
-  //     loading: Loading,
-  //   }),
-  //   routes: [
-  //     {
-  //       text: '键盘图表',
-  // roles: ['custome', 'admin'],
-  //
-  // path: '/chart/keyboard',
-  //       component: Loadable({
-  //         loader: () => import('@/pages/chart/keyboard'),
-  //         loading: Loading,
-  //       }),
-  //     },
-  //     {
-  //       text: '折线图',
-  // roles: ['custome', 'admin'],
-  //
-  // path: '/chart/line',
-  //       component: Loadable({
-  //         loader: () => import('@/pages/chart/line'),
-  //         loading: Loading,
-  //       }),
-  //     },
-  //     {
-  //       text: '混合图表',
-  // roles: ['custome', 'admin'],
-  //
-  // path: '/chart/mixChart',
-  //       component: Loadable({
-  //         loader: () => import('@/pages/chart/mixChart'),
-  //         loading: Loading,
-  //       }),
-  //     },
-  //   ],
-  // },
 
   {
     text: '嵌套菜单',
@@ -262,15 +220,15 @@ export const routes = [
     }),
   },
 
-  {
-    text: '关于',
-    roles: ['custome', 'admin'],
-    path: '/about',
-    component: Loadable({
-      loader: () => import('@/pages/about'),
-      loading: Loading,
-    }),
-  },
+  // {
+  //   text: '关于',
+  //   roles: ['custome', 'admin'],
+  //   path: '/about',
+  //   component: Loadable({
+  //     loader: () => import('@/pages/about'),
+  //     loading: Loading,
+  //   }),
+  // },
   // {
   //   text: '404',
   //   hidden: true,

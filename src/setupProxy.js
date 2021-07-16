@@ -14,10 +14,10 @@ module.exports = function (app) {
   app.use(
     proxy('/api', {
       target:
-        'https://mock.mengxuegu.com/mock/60a4ab7dff333b1b32495812/api_copy',
+        'https://mock.mengxuegu.com/mock/60eec3e06644dc4a672d42e0/react-ant-manage',
       changeOrigin: true,
       pathRewrite: {
-        '^/api': '/api',
+        '^/api': '',
       },
     })
   )

@@ -1,8 +1,9 @@
 import Axios from 'axios'
-
+import { ProdBaseUrl } from '@/config/ipConfig'
 export const axios = Axios
 export const request = Axios.create({
-  baseURL: 'https://mock.mengxuegu.com/mock/60a4ab7dff333b1b32495812/api_copy',
+  baseURL: process.env.NODE_ENV === 'development' ? '/api' : ProdBaseUrl,
+  timeout: 5000,
 })
 
 // request.interceptors.request.use(

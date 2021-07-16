@@ -15,33 +15,7 @@ import { connect } from 'react-redux'
 import RouterView from '@/component/RouterView'
 import { filterAuthRouter } from '@/utils'
 const Content = (props) => {
-  // const filterRoute = (curRoute, role) => {
-  //   const { routes, roles } = curRoute
-  //   if (roles.includes(role)) {
-  //     return true
-  //   } else if (routes) {
-  //     return routes.some(({ roles }) => roles.includes(role))
-  //   }
-  //   return false
-  // }
-
-  // const getContent = (routes) => {
-  //   const curRole = props.cookie
-  //   let content = routes.reduce((pre, item) => {
-  //     const { routes, ...rest } = item
-  //     if (filterRoute(item, curRole)) {
-  //       if (routes) {
-  //         pre.push({
-  //           ...rest,
-  //           routes: getContent(routes),
-  //         })
-  //       }
-  //       pre.push(item)
-  //     }
-  //     return pre
-  //   }, [])
-  //   return content
-  // }
+  console.log(props)
   return (
     <Layout.Content
       // className="site-layout-background"

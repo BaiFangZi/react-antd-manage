@@ -35,7 +35,7 @@ const MenuNodes = (routes, role) => {
 
 const SideBar = (props) => {
   // console.log('1212112212212', props)
-  const [menuNode, setMenuNode] = useState([])
+  // const [menuNode, setMenuNode] = useState([])
   const { collapsed } = props
   const _curPath = props.location.pathname
   const [curPath, setCurpath] = useState(_curPath)

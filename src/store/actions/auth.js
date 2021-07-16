@@ -1,4 +1,4 @@
-import * as types from '../action-types'
+// import * as types from '../action-types'
 import { reqLoginIn, reqLoginOut } from '@/api/auth'
 import { setUserCookie, removeUserCookie } from './user'
 import { setCookie, removeCookie } from '@/utils/auth'
@@ -17,14 +17,13 @@ export const loginIn = (form) => (dispatch) => {
       password,
     })
       .then((res) => {
-        const { code, role } = res.data.data
-        // console.log(code, role)
-
+        const { code, data } = res.data
+        const { auth } = data
         if (code === 200) {
-          console.log(2323223323233)
-          setCookie(role)
-          console.log('action auth', role)
-          dispatch(setUserCookie(role))
+          // console.log(2323223323233)
+          setCookie(auth)
+          console.log('action auth', auth)
+          dispatch(setUserCookie(auth))
           resolve()
         } else {
           message.error('用户名错误,输入admin或者custome')
