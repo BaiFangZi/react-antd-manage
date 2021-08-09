@@ -11,7 +11,7 @@ const ExportZipMenu = (props) => {
         <Form.Item label="标题" name="fileName">
           <Input placeholder="被包裹的文件名"></Input>
         </Form.Item>
-        <Form.Item label="Zip名称" name="textName">
+        <Form.Item label="Zip名称" name="txtName">
           <Input placeholder="导出zip文件名"></Input>
         </Form.Item>
         <Form.Item>
